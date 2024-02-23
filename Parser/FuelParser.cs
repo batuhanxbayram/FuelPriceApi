@@ -47,20 +47,17 @@ namespace FuelPriceApi.Parser
             }
 
             
-
-
             return new Fuel()
             {
                 Petrol=petrol,
                 Diesel=diesel,
                 Lpg=lpg,
                 CurrentDate=DateTime.Now,
-                City= await GetCityNameFromUrl(webUrl),
+                City= GetCityNameFromUrl(webUrl),
             };
         }
-        public async Task<string> GetCityNameFromUrl(string webUrl)
+        public string GetCityNameFromUrl(string webUrl)
         {
-
             string[] city = webUrl.Split("/");
             string lastitem = city[^1];
 
@@ -68,8 +65,6 @@ namespace FuelPriceApi.Parser
             else if (lastitem.Contains("izmir")) return "İzmir";
             else if (lastitem.Contains("ankara")) return "Ankara";
             else return "Unknow";
-           
-
         }
 
     }

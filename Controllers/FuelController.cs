@@ -14,10 +14,23 @@ namespace FuelPriceApi.Controllers
       
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetIstanbul()
         {
             var data = parser.ParseWebAsync("https://www.petrolofisi.com.tr/akaryakit-fiyatlari/istanbul-akaryakit-fiyatlari");
+           
+            return Ok(data);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAnkara()
+        {
+            var data = parser.ParseWebAsync("https://www.petrolofisi.com.tr/akaryakit-fiyatlari/ankara-akaryakit-fiyatlari");
 
+            return Ok(data);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetIzmir()
+        {
+            var data = parser.ParseWebAsync("https://www.petrolofisi.com.tr/akaryakit-fiyatlari/izmir-akaryakit-fiyatlari");
 
             return Ok(data);
         }
